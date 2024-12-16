@@ -1,0 +1,14 @@
+{
+	"name": "External ADC Store",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://adcstoreaccessexternal.dfs.core.windows.net/"
+		},
+		"connectVia": {
+			"referenceName": "adf-ir-sdebeta",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
