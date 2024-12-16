@@ -1,0 +1,127 @@
+{
+	"name": "CopyRdeTablesToWS_dar021",
+	"properties": {
+		"activities": [
+			{
+				"name": "LkpRdeTableNames",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureDatabricksDeltaLakeSource",
+						"query": {
+							"value": "SELECT DISTINCT table_name FROM system.information_schema.tables WHERE table_catalog = '5_projects' AND LOWER(table_schema) = LOWER('@{pipeline().parameters.project_id}')",
+							"type": "Expression"
+						}
+					},
+					"dataset": {
+						"referenceName": "ADCDeltaLakeDS",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEachTable",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LkpRdeTableNames",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LkpRdeTableNames').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 2,
+					"activities": [
+						{
+							"name": "CopyDeltaToCsv",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureDatabricksDeltaLakeSource",
+									"query": {
+										"value": "SELECT * FROM 5_projects.@{pipeline().parameters.project_id}.@{item().table_name}",
+										"type": "Expression"
+									},
+									"exportSettings": {
+										"type": "AzureDatabricksDeltaLakeExportCommand"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureFileStorageWriteSettings",
+										"maxConcurrentConnections": 1,
+										"copyBehavior": "MergeFiles"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".csv"
+									}
+								},
+								"enableStaging": true,
+								"stagingSettings": {
+									"linkedServiceName": {
+										"referenceName": "AzureDataLakeStorage1",
+										"type": "LinkedServiceReference"
+									},
+									"path": "staging/adf_sdebeta"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "ADCDeltaLakeDS",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ws_fileshare_csv_dar021",
+									"type": "DatasetReference",
+									"parameters": {
+										"directory": "rde_@{pipeline().parameters.project_id}_v2",
+										"filename": "@{item().table_name}.csv"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"project_id": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-12-04T13:13:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,20 @@
+{
+	"name": "adf_sdebeta_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdcTestFileStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureFileStorageLocation",
+				"folderPath": "adf_sdebeta"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

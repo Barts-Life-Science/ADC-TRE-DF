@@ -1,0 +1,10 @@
+{
+	"name": "pe-adf-ws-sdebeta-ws-86f9",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-86f9/providers/Microsoft.Storage/storageAccounts/stgws86f9",
+		"groupId": "file",
+		"fqdns": [
+			"stgws86f9.file.core.windows.net"
+		]
+	}
+}

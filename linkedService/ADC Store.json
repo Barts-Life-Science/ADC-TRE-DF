@@ -1,0 +1,15 @@
+{
+	"name": "ADC Store",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://adcstorebarts.dfs.core.windows.net/"
+		},
+		"connectVia": {
+			"referenceName": "adf-ir-sdebeta",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "adc_sdebeta_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "__unitystorage/catalogs/eea020a5-9533-431f-8e05-a5c5431e41a3/volumes/2399a7f5-8725-430c-bfc3-842ce8744088",
+				"fileSystem": "inland"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

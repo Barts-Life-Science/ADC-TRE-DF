@@ -1,0 +1,10 @@
+{
+	"name": "pe-adf-ws-sdebeta-ws-1019",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-1019/providers/Microsoft.Storage/storageAccounts/stgws1019",
+		"groupId": "file",
+		"fqdns": [
+			"stgws1019.file.core.windows.net"
+		]
+	}
+}

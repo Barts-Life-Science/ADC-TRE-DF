@@ -1,0 +1,9 @@
+{
+	"name": "adf-sdebeta",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b1a26b76-56c0-40b3-b4c8-76223d5412d0",
+		"tenantId": "ec59af5f-b351-4cd8-ab82-d7ac12584efc"
+	}
+}

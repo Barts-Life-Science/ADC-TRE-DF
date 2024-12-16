@@ -1,0 +1,10 @@
+{
+	"name": "pe-adf-ws-sdebeta-ws-ddc4",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-ddc4/providers/Microsoft.Storage/storageAccounts/stgwsddc4",
+		"groupId": "file",
+		"fqdns": [
+			"stgwsddc4.file.core.windows.net"
+		]
+	}
+}

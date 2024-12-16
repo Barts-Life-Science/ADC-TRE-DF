@@ -1,0 +1,25 @@
+{
+	"name": "AdcInlandUCatalogVolCsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "test_dac016_schema.csv",
+				"folderPath": "__unitystorage/catalogs/eea020a5-9533-431f-8e05-a5c5431e41a3/volumes/af46559e-4ce1-4fb4-a2f1-4d3b6e2b1e49",
+				"fileSystem": "inland"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

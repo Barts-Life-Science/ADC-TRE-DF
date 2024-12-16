@@ -1,0 +1,10 @@
+{
+	"name": "AzureDataLakeStorage672",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Storage/storageAccounts/adcstoreaccessinternal",
+		"groupId": "dfs",
+		"fqdns": [
+			"adcstoreaccessinternal.dfs.core.windows.net"
+		]
+	}
+}

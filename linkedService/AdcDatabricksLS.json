@@ -1,0 +1,14 @@
+{
+	"name": "AdcDatabricksLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-3660342888273328.8.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Databricks/workspaces/AnalysisDataCore",
+			"existingClusterId": "1017-133624-2cx30r9z"
+		}
+	}
+}

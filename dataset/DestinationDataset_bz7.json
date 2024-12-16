@@ -1,0 +1,22 @@
+{
+	"name": "DestinationDataset_bz7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls-adf-shared_storage-sdebeta-ws-d0d4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureFileStorageLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

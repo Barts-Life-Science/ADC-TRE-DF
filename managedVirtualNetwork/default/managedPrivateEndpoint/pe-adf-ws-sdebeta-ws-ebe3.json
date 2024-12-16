@@ -1,0 +1,7 @@
+{
+	"name": "pe-adf-ws-sdebeta-ws-ebe3",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-ebe3/providers/Microsoft.Storage/storageAccounts/stgwsebe3",
+		"groupId": "file"
+	}
+}
