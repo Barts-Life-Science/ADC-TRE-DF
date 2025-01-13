@@ -1,0 +1,584 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-sdebeta"
+		},
+		"AdcTestFileStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AdcTestFileStorage'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-1019_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-1019'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-3e8d_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-3e8d'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-62d5_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-62d5'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-86f9_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-86f9'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-8c51_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-8c51'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-95d7_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-95d7'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-d0d4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-d0d4'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-d9d5_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-d9d5'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-ddc4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-ddc4'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adcstoreaccessinternal.dfs.core.windows.net/"
+		},
+		"External ADC Store_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adcstoreaccessexternal.dfs.core.windows.net/"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AdcTestFileStorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AdcTestFileStorage_connectionString')]",
+					"fileShare": "intfileshare"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/External ADC Store')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('External ADC Store_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-1019')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-1019_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-3e8d')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-3e8d_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-62d5')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-62d5_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-86f9')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-86f9_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-8c51')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-8c51_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-95d7')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-95d7_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-d0d4')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-d0d4_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-d9d5')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-d9d5_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-ddc4')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-ddc4_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AdcInlandUCatalogVolCsv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "test_dac016_schema.csv",
+						"folderPath": "__unitystorage/catalogs/eea020a5-9533-431f-8e05-a5c5431e41a3/volumes/af46559e-4ce1-4fb4-a2f1-4d3b6e2b1e49",
+						"fileSystem": "inland"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_bz7')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls-adf-shared_storage-sdebeta-ws-d0d4",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls-adf-shared_storage-sdebeta-ws-d0d4')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adc_sdebeta_csv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "__unitystorage/catalogs/eea020a5-9533-431f-8e05-a5c5431e41a3/volumes/2399a7f5-8725-430c-bfc3-842ce8744088",
+						"fileSystem": "inland"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adf_sdebeta_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AdcTestFileStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation",
+						"folderPath": "adf_sdebeta"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AdcTestFileStorage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/playground_fileshare_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls-adf-shared_storage-sdebeta-ws-86f9",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"directory": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation",
+						"folderPath": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls-adf-shared_storage-sdebeta-ws-86f9')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ws_fileshare_csv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls-adf-shared_storage-sdebeta-ws-3e8d",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"directory": {
+						"type": "string"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\r",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls-adf-shared_storage-sdebeta-ws-3e8d')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ws_fileshare_csv_dar021')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls-adf-shared_storage-sdebeta-ws-95d7",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"directory": {
+						"type": "string"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\r",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls-adf-shared_storage-sdebeta-ws-95d7')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_bz7')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_bz7",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "evan_demo.demo_pi_lkp_cde_code_value_ref"
+							},
+							{
+								"name": "Destination",
+								"value": "/"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "AzureDatabricksDeltaLakeSource",
+								"exportSettings": {
+									"type": "AzureDatabricksDeltaLakeExportCommand"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureFileStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".csv"
+								}
+							},
+							"enableStaging": true,
+							"stagingSettings": {
+								"linkedServiceName": {
+									"referenceName": "AzureDataLakeStorage1",
+									"type": "LinkedServiceReference"
+								},
+								"path": "staging"
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SourceDataset_bz7",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DestinationDataset_bz7",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-09-09T14:53:12Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_bz7')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		}
+	]
+}

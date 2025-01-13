@@ -1,0 +1,1622 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-sdebeta"
+		},
+		"AdcTestFileStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AdcTestFileStorage'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-1019_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-1019'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-3e8d_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-3e8d'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-62d5_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-62d5'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-86f9_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-86f9'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-8c51_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-8c51'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-95d7_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-95d7'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-d0d4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-d0d4'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-d9d5_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-d9d5'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-ddc4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-ddc4'"
+		},
+		"ADC Store_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adcstorebarts.dfs.core.windows.net/"
+		},
+		"AdcDatabricksLS_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1017-133624-2cx30r9z"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adcstoreaccessinternal.dfs.core.windows.net/"
+		},
+		"External ADC Store_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adcstoreaccessexternal.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage399_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Storage/storageAccounts/adcstoreaccessexternal"
+		},
+		"AzureDataLakeStorage399_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"AzureDataLakeStorage505_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Storage/storageAccounts/adcstorebarts"
+		},
+		"AzureDataLakeStorage505_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"AzureDataLakeStorage505_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"adcstorebarts.dfs.core.windows.net"
+			]
+		},
+		"AzureDataLakeStorage672_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Storage/storageAccounts/adcstoreaccessinternal"
+		},
+		"AzureDataLakeStorage672_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"AzureDataLakeStorage672_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"adcstoreaccessinternal.dfs.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-1019_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-1019/providers/Microsoft.Storage/storageAccounts/stgws1019"
+		},
+		"pe-adf-ws-sdebeta-ws-1019_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-1019_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws1019.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-3e8d_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-3e8d/providers/Microsoft.Storage/storageAccounts/stgws3e8d"
+		},
+		"pe-adf-ws-sdebeta-ws-3e8d_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-3e8d_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws3e8d.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-62d5_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-62d5/providers/Microsoft.Storage/storageAccounts/stgws62d5"
+		},
+		"pe-adf-ws-sdebeta-ws-62d5_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-62d5_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws62d5.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-67b7_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-67b7/providers/Microsoft.Storage/storageAccounts/stgws67b7"
+		},
+		"pe-adf-ws-sdebeta-ws-67b7_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-86f9_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-86f9/providers/Microsoft.Storage/storageAccounts/stgws86f9"
+		},
+		"pe-adf-ws-sdebeta-ws-86f9_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-86f9_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws86f9.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-8c51_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-8c51/providers/Microsoft.Storage/storageAccounts/stgws8c51"
+		},
+		"pe-adf-ws-sdebeta-ws-8c51_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-8c51_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws8c51.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-95d7_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-95d7/providers/Microsoft.Storage/storageAccounts/stgws95d7"
+		},
+		"pe-adf-ws-sdebeta-ws-95d7_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-95d7_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws95d7.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-d9d5_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-d9d5/providers/Microsoft.Storage/storageAccounts/stgwsd9d5"
+		},
+		"pe-adf-ws-sdebeta-ws-d9d5_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-d9d5_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgwsd9d5.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-ddc4_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-ddc4/providers/Microsoft.Storage/storageAccounts/stgwsddc4"
+		},
+		"pe-adf-ws-sdebeta-ws-ddc4_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-ddc4_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgwsddc4.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-ebe3_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-ebe3/providers/Microsoft.Storage/storageAccounts/stgwsebe3"
+		},
+		"pe-adf-ws-sdebeta-ws-ebe3_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_bz7')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_bz7",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "evan_demo.demo_pi_lkp_cde_code_value_ref"
+							},
+							{
+								"name": "Destination",
+								"value": "/"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "AzureDatabricksDeltaLakeSource",
+								"exportSettings": {
+									"type": "AzureDatabricksDeltaLakeExportCommand"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureFileStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".csv"
+								}
+							},
+							"enableStaging": true,
+							"stagingSettings": {
+								"linkedServiceName": {
+									"referenceName": "AzureDataLakeStorage1",
+									"type": "LinkedServiceReference"
+								},
+								"path": "staging"
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SourceDataset_bz7",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DestinationDataset_bz7",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-09-09T14:53:12Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_bz7')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_bz7')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyRdeTablesToWS')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "LkpRdeTableNames",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureDatabricksDeltaLakeSource",
+								"query": {
+									"value": "SELECT DISTINCT table_name FROM system.information_schema.tables WHERE table_catalog = '5_projects' AND LOWER(table_schema) = LOWER('@{pipeline().parameters.project_id}')",
+									"type": "Expression"
+								}
+							},
+							"dataset": {
+								"referenceName": "ADCDeltaLakeDS",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEachTable",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "LkpRdeTableNames",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('LkpRdeTableNames').output.value",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"batchCount": 2,
+							"activities": [
+								{
+									"name": "CopyDeltaToCsv",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureDatabricksDeltaLakeSource",
+											"query": {
+												"value": "SELECT * FROM 5_projects.@{pipeline().parameters.project_id}.@{item().table_name}",
+												"type": "Expression"
+											},
+											"exportSettings": {
+												"type": "AzureDatabricksDeltaLakeExportCommand"
+											}
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureFileStorageWriteSettings",
+												"maxConcurrentConnections": 1,
+												"copyBehavior": "MergeFiles"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".csv"
+											}
+										},
+										"enableStaging": true,
+										"stagingSettings": {
+											"linkedServiceName": {
+												"referenceName": "AzureDataLakeStorage1",
+												"type": "LinkedServiceReference"
+											},
+											"path": "staging/adf_sdebeta"
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "ADCDeltaLakeDS",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "ws_fileshare_csv",
+											"type": "DatasetReference",
+											"parameters": {
+												"directory": {
+													"value": "rde_@{pipeline().parameters.project_id}_v2",
+													"type": "Expression"
+												},
+												"filename": {
+													"value": "@{item().table_name}.csv",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"project_id": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-11-27T16:25:19Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ADCDeltaLakeDS')]",
+				"[concat(variables('factoryId'), '/datasets/ws_fileshare_csv')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyRdeTablesToWS_dar021')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "LkpRdeTableNames",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureDatabricksDeltaLakeSource",
+								"query": {
+									"value": "SELECT DISTINCT table_name FROM system.information_schema.tables WHERE table_catalog = '5_projects' AND LOWER(table_schema) = LOWER('@{pipeline().parameters.project_id}')",
+									"type": "Expression"
+								}
+							},
+							"dataset": {
+								"referenceName": "ADCDeltaLakeDS",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEachTable",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "LkpRdeTableNames",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('LkpRdeTableNames').output.value",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"batchCount": 2,
+							"activities": [
+								{
+									"name": "CopyDeltaToCsv",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureDatabricksDeltaLakeSource",
+											"query": {
+												"value": "SELECT * FROM 5_projects.@{pipeline().parameters.project_id}.@{item().table_name}",
+												"type": "Expression"
+											},
+											"exportSettings": {
+												"type": "AzureDatabricksDeltaLakeExportCommand"
+											}
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureFileStorageWriteSettings",
+												"maxConcurrentConnections": 1,
+												"copyBehavior": "MergeFiles"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".csv"
+											}
+										},
+										"enableStaging": true,
+										"stagingSettings": {
+											"linkedServiceName": {
+												"referenceName": "AzureDataLakeStorage1",
+												"type": "LinkedServiceReference"
+											},
+											"path": "staging/adf_sdebeta"
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "ADCDeltaLakeDS",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "ws_fileshare_csv_dar021",
+											"type": "DatasetReference",
+											"parameters": {
+												"directory": "rde_@{pipeline().parameters.project_id}_v2",
+												"filename": "@{item().table_name}.csv"
+											}
+										}
+									]
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"project_id": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-12-04T13:13:03Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ADCDeltaLakeDS')]",
+				"[concat(variables('factoryId'), '/datasets/ws_fileshare_csv_dar021')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyRdeToWs')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "LkpRdeTables",
+						"type": "Lookup",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureDatabricksDeltaLakeSource",
+								"query": "SELECT DISTINCT table_name FROM system.information_schema.tables WHERE     table_catalog = '4_prod' AND table_schema = 'rde' AND table_name ILIKE 'rde_%'"
+							},
+							"dataset": {
+								"referenceName": "ADCDeltaLakeDS",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "CopyRdeIntoWS",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings",
+									"copyBehavior": "MergeFiles"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".csv"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AdcInlandUCatalogVolCsv",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "adc_sdebeta_csv",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Notebook1",
+						"type": "DatabricksNotebook",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Shared/ADC-DF/databricks/AdfSdeBeta/ExportDeltaTableToFile"
+						},
+						"linkedServiceName": {
+							"referenceName": "AdcDatabricksLS",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-11-27T11:48:23Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ADCDeltaLakeDS')]",
+				"[concat(variables('factoryId'), '/datasets/AdcInlandUCatalogVolCsv')]",
+				"[concat(variables('factoryId'), '/datasets/adc_sdebeta_csv')]",
+				"[concat(variables('factoryId'), '/linkedServices/AdcDatabricksLS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DAR005')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "LkpRdeTableNames",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureDatabricksDeltaLakeSource",
+								"query": {
+									"value": "SELECT DISTINCT table_name FROM system.information_schema.tables WHERE table_catalog = '5_projects' AND LOWER(table_schema) = 'dar005'",
+									"type": "Expression"
+								}
+							},
+							"dataset": {
+								"referenceName": "ADCDeltaLakeDS",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEachTable",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "LkpRdeTableNames",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('LkpRdeTableNames').output.value",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"batchCount": 2,
+							"activities": [
+								{
+									"name": "CopyDeltaToCsv",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureDatabricksDeltaLakeSource",
+											"query": {
+												"value": "SELECT * FROM 5_projects.@{pipeline().parameters.project_id}.@{item().table_name}",
+												"type": "Expression"
+											},
+											"exportSettings": {
+												"type": "AzureDatabricksDeltaLakeExportCommand"
+											}
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureFileStorageWriteSettings",
+												"maxConcurrentConnections": 1,
+												"copyBehavior": "MergeFiles"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".csv"
+											}
+										},
+										"enableStaging": true,
+										"stagingSettings": {
+											"linkedServiceName": {
+												"referenceName": "AzureDataLakeStorage1",
+												"type": "LinkedServiceReference"
+											},
+											"path": "staging/adf_sdebeta"
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "ADCDeltaLakeDS",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "ws_fileshare_csv_dar021",
+											"type": "DatasetReference",
+											"parameters": {
+												"directory": "rde_@{pipeline().parameters.project_id}_v2",
+												"filename": "@{item().table_name}.csv"
+											}
+										}
+									]
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"project_id": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-12-04T13:13:03Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ADCDeltaLakeDS')]",
+				"[concat(variables('factoryId'), '/datasets/ws_fileshare_csv_dar021')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ADCDeltaLakeDS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricksDeltaLake1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureDatabricksDeltaLakeDataset",
+				"typeProperties": {
+					"database": "evan_demo",
+					"table": "cds_apc"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricksDeltaLake1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AdcInlandUCatalogVolCsv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "test_dac016_schema.csv",
+						"folderPath": "__unitystorage/catalogs/eea020a5-9533-431f-8e05-a5c5431e41a3/volumes/af46559e-4ce1-4fb4-a2f1-4d3b6e2b1e49",
+						"fileSystem": "inland"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_bz7')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls-adf-shared_storage-sdebeta-ws-d0d4",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls-adf-shared_storage-sdebeta-ws-d0d4')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_bz7')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricksDeltaLake1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureDatabricksDeltaLakeDataset",
+				"typeProperties": {
+					"database": "evan_demo",
+					"table": "demo_pi_lkp_cde_code_value_ref"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricksDeltaLake1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adc_sdebeta_csv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "__unitystorage/catalogs/eea020a5-9533-431f-8e05-a5c5431e41a3/volumes/2399a7f5-8725-430c-bfc3-842ce8744088",
+						"fileSystem": "inland"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adf_sdebeta_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AdcTestFileStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation",
+						"folderPath": "adf_sdebeta"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AdcTestFileStorage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/playground_fileshare_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls-adf-shared_storage-sdebeta-ws-86f9",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"directory": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation",
+						"folderPath": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls-adf-shared_storage-sdebeta-ws-86f9')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ws_fileshare_csv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls-adf-shared_storage-sdebeta-ws-3e8d",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"directory": {
+						"type": "string"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\r",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls-adf-shared_storage-sdebeta-ws-3e8d')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ws_fileshare_csv_dar021')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls-adf-shared_storage-sdebeta-ws-95d7",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"directory": {
+						"type": "string"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureFileStorageLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\r",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls-adf-shared_storage-sdebeta-ws-95d7')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ADC Store')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ADC Store_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AdcDatabricksLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-3660342888273328.8.azuredatabricks.net",
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Databricks/workspaces/AnalysisDataCore",
+					"existingClusterId": "[parameters('AdcDatabricksLS_properties_typeProperties_existingClusterId')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AdcTestFileStorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AdcTestFileStorage_connectionString')]",
+					"fileShare": "intfileshare"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDatabricksDeltaLake1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricksDeltaLake",
+				"typeProperties": {
+					"domain": "https://adb-3660342888273328.8.azuredatabricks.net",
+					"clusterId": "1017-133624-2cx30r9z",
+					"workspaceResourceId": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Databricks/workspaces/AnalysisDataCore"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/External ADC Store')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('External ADC Store_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-1019')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-1019_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-3e8d')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-3e8d_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-62d5')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-62d5_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-86f9')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-86f9_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-8c51')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-8c51_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-95d7')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-95d7_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-d0d4')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-d0d4_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-d9d5')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-d9d5_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls-adf-shared_storage-sdebeta-ws-ddc4')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFileStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls-adf-shared_storage-sdebeta-ws-ddc4_connectionString')]",
+					"fileShare": "vm-shared-storage"
+				},
+				"connectVia": {
+					"referenceName": "adf-ir-sdebeta",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adf-ir-sdebeta')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adf-ir-sdebeta')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "UK South",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0,
+							"cleanup": true
+						}
+					}
+				},
+				"managedVirtualNetwork": {
+					"type": "ManagedVirtualNetworkReference",
+					"referenceName": "default"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks",
+			"apiVersion": "2018-06-01",
+			"properties": {},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/AzureDataLakeStorage399')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('AzureDataLakeStorage399_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('AzureDataLakeStorage399_properties_groupId')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/AzureDataLakeStorage505')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('AzureDataLakeStorage505_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('AzureDataLakeStorage505_properties_groupId')]",
+				"fqdns": "[parameters('AzureDataLakeStorage505_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/AzureDataLakeStorage672')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('AzureDataLakeStorage672_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('AzureDataLakeStorage672_properties_groupId')]",
+				"fqdns": "[parameters('AzureDataLakeStorage672_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-1019')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-1019_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-1019_properties_groupId')]",
+				"fqdns": "[parameters('pe-adf-ws-sdebeta-ws-1019_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-3e8d')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-3e8d_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-3e8d_properties_groupId')]",
+				"fqdns": "[parameters('pe-adf-ws-sdebeta-ws-3e8d_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-62d5')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-62d5_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-62d5_properties_groupId')]",
+				"fqdns": "[parameters('pe-adf-ws-sdebeta-ws-62d5_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-67b7')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-67b7_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-67b7_properties_groupId')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-86f9')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-86f9_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-86f9_properties_groupId')]",
+				"fqdns": "[parameters('pe-adf-ws-sdebeta-ws-86f9_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-8c51')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-8c51_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-8c51_properties_groupId')]",
+				"fqdns": "[parameters('pe-adf-ws-sdebeta-ws-8c51_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-95d7')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-95d7_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-95d7_properties_groupId')]",
+				"fqdns": "[parameters('pe-adf-ws-sdebeta-ws-95d7_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-d9d5')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-d9d5_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-d9d5_properties_groupId')]",
+				"fqdns": "[parameters('pe-adf-ws-sdebeta-ws-d9d5_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-ddc4')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-ddc4_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-ddc4_properties_groupId')]",
+				"fqdns": "[parameters('pe-adf-ws-sdebeta-ws-ddc4_properties_fqdns')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/pe-adf-ws-sdebeta-ws-ebe3')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('pe-adf-ws-sdebeta-ws-ebe3_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('pe-adf-ws-sdebeta-ws-ebe3_properties_groupId')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		}
+	]
+}

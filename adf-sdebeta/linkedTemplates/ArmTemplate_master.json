@@ -1,0 +1,452 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-sdebeta"
+		},
+		"AdcTestFileStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AdcTestFileStorage'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-1019_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-1019'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-3e8d_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-3e8d'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-62d5_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-62d5'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-86f9_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-86f9'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-8c51_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-8c51'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-95d7_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-95d7'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-d0d4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-d0d4'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-d9d5_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-d9d5'"
+		},
+		"ls-adf-shared_storage-sdebeta-ws-ddc4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls-adf-shared_storage-sdebeta-ws-ddc4'"
+		},
+		"ADC Store_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adcstorebarts.dfs.core.windows.net/"
+		},
+		"AdcDatabricksLS_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1017-133624-2cx30r9z"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adcstoreaccessinternal.dfs.core.windows.net/"
+		},
+		"External ADC Store_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adcstoreaccessexternal.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage399_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Storage/storageAccounts/adcstoreaccessexternal"
+		},
+		"AzureDataLakeStorage399_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"AzureDataLakeStorage505_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Storage/storageAccounts/adcstorebarts"
+		},
+		"AzureDataLakeStorage505_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"AzureDataLakeStorage505_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"adcstorebarts.dfs.core.windows.net"
+			]
+		},
+		"AzureDataLakeStorage672_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/c8ee312f-ad24-4e17-86e0-70eb77f66674/resourceGroups/PMP-Data-Team/providers/Microsoft.Storage/storageAccounts/adcstoreaccessinternal"
+		},
+		"AzureDataLakeStorage672_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"AzureDataLakeStorage672_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"adcstoreaccessinternal.dfs.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-1019_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-1019/providers/Microsoft.Storage/storageAccounts/stgws1019"
+		},
+		"pe-adf-ws-sdebeta-ws-1019_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-1019_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws1019.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-3e8d_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-3e8d/providers/Microsoft.Storage/storageAccounts/stgws3e8d"
+		},
+		"pe-adf-ws-sdebeta-ws-3e8d_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-3e8d_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws3e8d.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-62d5_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-62d5/providers/Microsoft.Storage/storageAccounts/stgws62d5"
+		},
+		"pe-adf-ws-sdebeta-ws-62d5_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-62d5_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws62d5.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-67b7_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-67b7/providers/Microsoft.Storage/storageAccounts/stgws67b7"
+		},
+		"pe-adf-ws-sdebeta-ws-67b7_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-86f9_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-86f9/providers/Microsoft.Storage/storageAccounts/stgws86f9"
+		},
+		"pe-adf-ws-sdebeta-ws-86f9_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-86f9_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws86f9.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-8c51_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-8c51/providers/Microsoft.Storage/storageAccounts/stgws8c51"
+		},
+		"pe-adf-ws-sdebeta-ws-8c51_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-8c51_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws8c51.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-95d7_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-95d7/providers/Microsoft.Storage/storageAccounts/stgws95d7"
+		},
+		"pe-adf-ws-sdebeta-ws-95d7_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-95d7_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgws95d7.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-d9d5_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-d9d5/providers/Microsoft.Storage/storageAccounts/stgwsd9d5"
+		},
+		"pe-adf-ws-sdebeta-ws-d9d5_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-d9d5_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgwsd9d5.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-ddc4_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-ddc4/providers/Microsoft.Storage/storageAccounts/stgwsddc4"
+		},
+		"pe-adf-ws-sdebeta-ws-ddc4_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"pe-adf-ws-sdebeta-ws-ddc4_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"stgwsddc4.file.core.windows.net"
+			]
+		},
+		"pe-adf-ws-sdebeta-ws-ebe3_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/87ad76be-f07f-4c25-b344-9a37c52d9c66/resourceGroups/rg-sdebeta-ws-ebe3/providers/Microsoft.Storage/storageAccounts/stgwsebe3"
+		},
+		"pe-adf-ws-sdebeta-ws-ebe3_properties_groupId": {
+			"type": "string",
+			"defaultValue": "file"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-sdebeta_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AdcDatabricksLS_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AdcDatabricksLS_properties_typeProperties_existingClusterId')]"
+					},
+					"AzureDataLakeStorage399_properties_privateLinkResourceId": {
+						"value": "[parameters('AzureDataLakeStorage399_properties_privateLinkResourceId')]"
+					},
+					"AzureDataLakeStorage399_properties_groupId": {
+						"value": "[parameters('AzureDataLakeStorage399_properties_groupId')]"
+					},
+					"AzureDataLakeStorage505_properties_privateLinkResourceId": {
+						"value": "[parameters('AzureDataLakeStorage505_properties_privateLinkResourceId')]"
+					},
+					"AzureDataLakeStorage505_properties_groupId": {
+						"value": "[parameters('AzureDataLakeStorage505_properties_groupId')]"
+					},
+					"AzureDataLakeStorage505_properties_fqdns": {
+						"value": "[parameters('AzureDataLakeStorage505_properties_fqdns')]"
+					},
+					"AzureDataLakeStorage672_properties_privateLinkResourceId": {
+						"value": "[parameters('AzureDataLakeStorage672_properties_privateLinkResourceId')]"
+					},
+					"AzureDataLakeStorage672_properties_groupId": {
+						"value": "[parameters('AzureDataLakeStorage672_properties_groupId')]"
+					},
+					"AzureDataLakeStorage672_properties_fqdns": {
+						"value": "[parameters('AzureDataLakeStorage672_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-1019_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-1019_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-1019_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-1019_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-1019_properties_fqdns": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-1019_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-3e8d_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-3e8d_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-3e8d_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-3e8d_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-3e8d_properties_fqdns": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-3e8d_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-62d5_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-62d5_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-62d5_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-62d5_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-62d5_properties_fqdns": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-62d5_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-67b7_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-67b7_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-67b7_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-67b7_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-86f9_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-86f9_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-86f9_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-86f9_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-86f9_properties_fqdns": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-86f9_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-8c51_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-8c51_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-8c51_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-8c51_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-8c51_properties_fqdns": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-8c51_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-95d7_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-95d7_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-95d7_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-95d7_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-95d7_properties_fqdns": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-95d7_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-d9d5_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-d9d5_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-d9d5_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-d9d5_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-d9d5_properties_fqdns": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-d9d5_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-ddc4_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-ddc4_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-ddc4_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-ddc4_properties_groupId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-ddc4_properties_fqdns": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-ddc4_properties_fqdns')]"
+					},
+					"pe-adf-ws-sdebeta-ws-ebe3_properties_privateLinkResourceId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-ebe3_properties_privateLinkResourceId')]"
+					},
+					"pe-adf-ws-sdebeta-ws-ebe3_properties_groupId": {
+						"value": "[parameters('pe-adf-ws-sdebeta-ws-ebe3_properties_groupId')]"
+					},
+					"ADC Store_properties_typeProperties_url": {
+						"value": "[parameters('ADC Store_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adf-sdebeta_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AdcTestFileStorage_connectionString": {
+						"value": "[parameters('AdcTestFileStorage_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-1019_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-1019_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-3e8d_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-3e8d_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-62d5_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-62d5_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-86f9_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-86f9_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-8c51_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-8c51_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-95d7_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-95d7_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-d0d4_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-d0d4_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-d9d5_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-d9d5_connectionString')]"
+					},
+					"ls-adf-shared_storage-sdebeta-ws-ddc4_connectionString": {
+						"value": "[parameters('ls-adf-shared_storage-sdebeta-ws-ddc4_connectionString')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"External ADC Store_properties_typeProperties_url": {
+						"value": "[parameters('External ADC Store_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-sdebeta_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adf-sdebeta_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-sdebeta_ArmTemplate_1')]"
+			]
+		}
+	]
+}
